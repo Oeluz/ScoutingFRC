@@ -21,6 +21,7 @@ namespace EasyPeasyScouting
         public int LowPoint { get; set; }
         public int UpPoint { get; set; }
         public int SmallPoint { get; set; }
+        public int FoulNum { get; set; }
         public List<EventNote> EventList { get; set; }
 
         public Robot(string name, string matchNum)
@@ -39,6 +40,7 @@ namespace EasyPeasyScouting
             LowPoint = 0;
             UpPoint = 0;
             SmallPoint = 0;
+            FoulNum = 0;
             EventList = new List<EventNote>();
         }
     }

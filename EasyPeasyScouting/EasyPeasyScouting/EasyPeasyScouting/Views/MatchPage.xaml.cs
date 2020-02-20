@@ -13,6 +13,10 @@ namespace EasyPeasyScouting.Views
     public partial class MatchPage : ContentPage
     {
         int screenNum = 0;
+        Robot robot;
+        bool teleoperated = true;
+
+
         public MatchPage()
         {
             InitializeComponent();
@@ -20,8 +24,16 @@ namespace EasyPeasyScouting.Views
             
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(MatchEntry.Text) || String.IsNullOrEmpty(NameEntry.Text))
+            {
+                await DisplayAlert("Blank Field", "Please enter the name of a robot or the match number.", "Ok");
+                return;
+            }
+
+            robot = new Robot(NameEntry.Text, MatchEntry.Text);
+
             screenNum++;
 
             StartBtn.IsVisible = false;
@@ -39,7 +51,155 @@ namespace EasyPeasyScouting.Views
             SubBotBtn.IsVisible = true;
             InitatedLabel.IsVisible = true;
             InitatedSwitch.IsVisible = true;
+
+
         }
+
+        private void PointButton_Clicked(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+
+            if(btn == UpperBtn)
+            {
+                if(teleoperated)
+                {
+                    robot.DoubleUpPoint++;
+                }
+                else
+                {
+                    robot.UpPoint++;
+                }
+
+                UpperBtn.Text = "# of Outer Scored: " + (robot.UpPoint + (robot.DoubleUpPoint * 2)).ToString();
+
+            }
+            else if(btn == SubUpperBtn)
+            {
+                if (teleoperated)
+                {
+                    robot.DoubleUpPoint--;
+                }
+                else
+                {
+                    robot.UpPoint--;
+                }
+
+                if (Negative(robot.DoubleUpPoint))
+                {
+                    robot.DoubleUpPoint = 0;
+                }
+
+                if (Negative(robot.UpPoint))
+                {
+                    robot.UpPoint = 0;
+                }
+
+                UpperBtn.Text = "# of Outer Scored: " + (robot.UpPoint + (robot.DoubleUpPoint * 2)).ToString();
+            }
+            else if (btn == BotBtn)
+            {
+                if (teleoperated)
+                {
+                    robot.DoubleLowPoint++;
+                }
+                else
+                {
+                    robot.LowPoint++;
+                }
+
+
+                BotBtn.Text = "# of Bottom Scored: " + (robot.LowPoint + (robot.DoubleLowPoint * 2)).ToString();
+            }
+            else if (btn == SubBotBtn)
+            {
+                if (teleoperated)
+                {
+                    robot.DoubleLowPoint--;
+                }
+                else
+                {
+                    robot.LowPoint--;
+                }
+
+                if (Negative(robot.DoubleLowPoint))
+                {
+                    robot.DoubleLowPoint = 0;
+                }
+
+                if (Negative(robot.LowPoint))
+                {
+                    robot.LowPoint = 0;
+                }
+
+                BotBtn.Text = "# of Bottom Scored: " + (robot.LowPoint + (robot.DoubleLowPoint * 2)).ToString();
+            }
+            else if (btn == InnerBtn)
+            {
+                if (teleoperated)
+                {
+                    robot.DoubleSmallPoint++;
+                }
+                else
+                {
+                    robot.SmallPoint++;
+                }
+
+                InnerBtn.Text = "# of Inner Scored: " + (robot.SmallPoint + (robot.DoubleSmallPoint * 2)).ToString();
+            }
+            else if (btn == SubInnerBtn)
+            {
+                if (teleoperated)
+                {
+                    robot.DoubleSmallPoint--;
+                }
+                else
+                {
+                    robot.SmallPoint--;
+                }
+
+                if (Negative(robot.DoubleSmallPoint))
+                {
+                    robot.DoubleSmallPoint = 0;
+                }
+
+                if (Negative(robot.SmallPoint))
+                {
+                    robot.SmallPoint = 0;
+                }
+
+                InnerBtn.Text = "# of Inner Scored: " + (robot.SmallPoint + (robot.DoubleSmallPoint * 2)).ToString();
+            }
+            else if (btn == TeleoBtn)
+            {
+                if (teleoperated)
+                {
+                    teleoperated = false;
+                }
+                else
+                {
+                    teleoperated = true;
+                }
+            }
+            else if (btn == FoulBtn)
+            {
+                robot.FoulNum++;
+                FoulBtn.Text = "Foul #: " + robot.FoulNum.ToString();
+            }
+
+        }
+
+        bool Negative(double num)
+        {
+            if(num >= 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
         {
             switch (e.Direction)
