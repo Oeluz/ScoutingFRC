@@ -7,6 +7,33 @@
              xmlns:local="clr-namespace:EasyPeasyScouting"
              Title="Match"
              x:Class="EasyPeasyScouting.Views.MatchPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BorderColor" Value="Orange"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="4"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style TargetType="Switch">
+                <Setter Property="Scale" Value="2"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="ThumbColor" Value="Black"/>
+                <Setter Property="OnColor" Value="Orange"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="Margin" Value="10,0"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <local:SwipeContainer x:Name="SwipeView"  Swipe="SwipeGestureRecognizer_Swiped">
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -29,21 +56,19 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            
-
             <!-- Screen #0 -->
             <Entry x:Name="NameEntry" Placeholder="Robot Name or Number" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
             <Entry x:Name="MatchEntry" Placeholder="Match Number" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
             <Button x:Name="StartBtn" Text="START" Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" FontSize="Large" 
-                    BackgroundColor="Black" TextColor="White" BorderColor="Orange" BorderWidth="4" Clicked="Button_Clicked" />
+                    Clicked="Button_Clicked" />
 
             <!-- Screen #1 -->
             <Button x:Name="FoulBtn" Text="Foul #: 0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" IsVisible="False" 
                     HorizontalOptions="FillAndExpand" Margin="20,0" Clicked="PointButton_Clicked"/>
-            <Button x:Name="TeleoBtn" Text="Teleoperate" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" IsVisible="False" HorizontalOptions="CenterAndExpand"
-                    IsEnabled="False" Clicked="PointButton_Clicked"/>
-            <Label x:Name="TimerLabel" Text="00:00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" IsVisible="False" HorizontalOptions="Center"
-                   FontSize="40"/>
+            <Button x:Name="TeleoBtn" Text="Teleoperate" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" IsVisible="False" 
+                    HorizontalOptions="CenterAndExpand" Clicked="PointButton_Clicked"/>
+            <Label x:Name="TimerLabel" Text="00:00:00" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" IsVisible="False" 
+                   HorizontalOptions="Center" FontSize="40"/>
             <Button x:Name="InnerBtn" Text="# of Inner Scored: 0" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" 
                     IsVisible="False" Margin="10,0,0,0" Clicked="PointButton_Clicked"/>
             <Button x:Name="SubInnerBtn" Text="-" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4" Margin="0,0,5,0" IsVisible="False"
@@ -56,38 +81,35 @@
                     Margin="10,5,0,0" IsVisible="False" Clicked="PointButton_Clicked"/>
             <Button x:Name="SubBotBtn" Text="-" Grid.Row="6" Grid.RowSpan="2" Grid.Column="4" Margin="0,0,5,0" IsVisible="False"
                      Clicked="PointButton_Clicked"/>
-            <Label  x:Name="InitatedLabel" Text="Initated?" Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="Large" HorizontalOptions="Center"
-                    VerticalOptions="Center" IsVisible="False" IsEnabled="False" FontAttributes="Bold"/>
-                <Switch x:Name="InitatedSwitch" IsToggled="False" Grid.Row="8" Grid.RowSpan="2" Grid.Column="3" VerticalOptions="Center" 
-                    Scale="2" IsVisible="False"/>
+                
             
             <!-- Screen #2 -->
-                <Label x:Name="RotaLabel" Grid.Row="2" Grid.ColumnSpan="3" VerticalOptions="Center" Margin="10,0" Text="Rotated?" 
-                       FontSize="Large" IsVisible="False" FontAttributes="Bold"/>
-                <Switch x:Name="RotationSwitch" Grid.Row="2" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End" 
-                        Margin="3" Scale="2" IsVisible="False"/>
-                <Label x:Name="PosLabel" Grid.Row="3" Grid.ColumnSpan="3" VerticalOptions="Center" Margin="10,0" Text="Positioned?" 
-                       FontSize="Large" IsVisible="False" FontAttributes="Bold"/>
-                <Switch x:Name="PositionSwitch" Grid.Row="3" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End" 
-                        Margin="3" Scale="2" IsVisible="False"/>
-                <Label x:Name="HangLabel" Grid.Row="4" Grid.ColumnSpan="3" VerticalOptions="Center" Margin="10,0" Text="Hanged?" 
-                       FontSize="Large" IsVisible="False" FontAttributes="Bold"/>
-                <Switch x:Name="HangedSwitch" Grid.Row="4" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End" 
-                        Margin="3" Scale="2" IsVisible="False"/>
-                <Label x:Name="LevelLabel" Grid.Row="5" Grid.ColumnSpan="3" VerticalOptions="Center" Margin="10,0" Text="Leveled?" 
-                       FontSize="Large" IsVisible="False" FontAttributes="Bold"/>
-                <Switch x:Name="LeveledSwitch" Grid.Row="5" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End" 
-                        Margin="3" Scale="2" IsVisible="False"/>
-                <Label x:Name="ParkLabel" Grid.Row="6" Grid.ColumnSpan="3" VerticalOptions="Center" Margin="10,0" Text="Parked?" 
-                       FontSize="Large" IsVisible="False" FontAttributes="Bold"/>
-                <Switch x:Name="ParkedSwitch" Grid.Row="6" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="End" 
-                        Margin="3" Scale="2" IsVisible="False"/>
-            
+                <Label x:Name="RotaLabel" Grid.Row="2" Grid.ColumnSpan="3" Text="Rotated?" IsVisible="False" />
+                <Switch x:Name="RotationSwitch" Grid.Row="2" Grid.Column="3"
+                        Margin="3" IsVisible="False" Toggled="Switch_Toggled"/>
+                <Label x:Name="PosLabel" Grid.Row="3" Grid.ColumnSpan="3" Text="Positioned?" IsVisible="False" />
+                <Switch x:Name="PositionSwitch" Grid.Row="3" Grid.Column="3"
+                        Margin="3" IsVisible="False" Toggled="Switch_Toggled"/>
+                <Label x:Name="HangLabel" Grid.Row="4" Grid.ColumnSpan="3" Text="Hanged?" IsVisible="False" />
+                <Switch x:Name="HangedSwitch" Grid.Row="4" Grid.Column="3"
+                        Margin="3" IsVisible="False" Toggled="Switch_Toggled"/>
+                <Label x:Name="LevelLabel" Grid.Row="5" Grid.ColumnSpan="3" Text="Leveled?" IsVisible="False" />
+                <Switch x:Name="LeveledSwitch" Grid.Row="5" Grid.Column="3"
+                        Margin="3" IsVisible="False" Toggled="Switch_Toggled"/>
+                <Label x:Name="ParkLabel" Grid.Row="6" Grid.ColumnSpan="3" Text="Parked?" IsVisible="False" />
+                <Switch x:Name="ParkedSwitch" Grid.Row="6" Grid.Column="3"
+                        Margin="3" IsVisible="False" Toggled="Switch_Toggled"/>
+                <Label  x:Name="InitatedLabel" Grid.Row="7" Grid.ColumnSpan="4" Text="Initated?" IsVisible="False" />
+                <Switch x:Name="InitatedSwitch" Grid.Row="7" Grid.Column="3"
+                        Margin="3" IsVisible="False" Toggled="Switch_Toggled"/>
+
                 <!-- Screen #3 -->
-                <Label x:Name="NoteLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center"  VerticalOptions="Center" Margin="20,5" Text="Note" 
-                       FontSize="Large" FontAttributes="Bold" IsVisible="False"/>
-                <Editor x:Name="NoteEdit" Grid.Row="2" Grid.RowSpan="5" Grid.ColumnSpan="5" Margin="30,10" IsVisible="False"/>
-                <Button x:Name="SaveBtn" Grid.Row="8" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5,0,30" Text="Save" IsVisible="False"/>
+                <Label x:Name="NoteLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Margin="20,5" Text="Note" 
+                       FontSize="Large"  IsVisible="False"/>
+                <Editor x:Name="NoteEdit" Grid.Row="2" Grid.RowSpan="5" Grid.ColumnSpan="5" Margin="30,10" BackgroundColor="Black" 
+                        TextColor="White" IsVisible="False" Placeholder="Type something here...." PlaceholderColor="White"/>
+                <Button x:Name="SaveBtn" Grid.Row="8" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5,0,30" Text="Save" 
+                        IsVisible="False" Clicked="SaveBtn_Clicked"/>
             </Grid>
             
         </local:SwipeContainer>

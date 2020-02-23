@@ -8,9 +8,17 @@
              x:Class="EasyPeasyScouting.Views.RecordPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Record Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="RobotLV" ItemsSource="{Binding}"  RowHeight="50" ItemTapped="RobotLV_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}" FontSize="Medium"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

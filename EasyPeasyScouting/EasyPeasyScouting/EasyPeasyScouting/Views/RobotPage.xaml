@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EasyPeasyScouting.Views.RobotPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="EmailBtn" Text="Email" Clicked="EmailBtn_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="4, 2"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Label Text="{Binding Name, StringFormat='Name: {0}'}"/>
+            <Label Text="{Binding MatchNum, StringFormat='Match #: {0}'}"/>
+            <Label Text="{Binding Initated, StringFormat='Initated: {0}'}"/>
+            <Label Text="{Binding Hanged, StringFormat='Hanged: {0}'}"/>
+            <Label Text="{Binding Leveled, StringFormat='Leveled: {0}'}"/>
+            <Label Text="{Binding Parked, StringFormat='Parked: {0}'}"/>
+            <Label Text="{Binding RotationCtrl, StringFormat='Rotation: {0}'}"/>
+            <Label Text="{Binding PositionCtrl, StringFormat='Position: {0}'}"/>
+            <Label Text="{Binding DoubleLowPoint, StringFormat='# of Bottom Points (Non-Teleoperated): {0}'}"/>
+            <Label Text="{Binding DoubleUpPoint, StringFormat='# of Upper Points (Non-Teleoperated): {0}'}"/>
+            <Label Text="{Binding DoubleSmallPoint, StringFormat='# of Inner Points (Non-Teleoperated): {0}'}"/>
+            <Label Text="{Binding LowPoint, StringFormat='# of Bottom Points: {0}'}"/>
+            <Label Text="{Binding UpPoint, StringFormat='# of Upper Points: {0}'}"/>
+            <Label Text="{Binding SmallPoint, StringFormat='# of Inner Points: {0}'}"/>
+                <Label Text="{Binding FoulNum, StringFormat='# of Fouls: {0}'}"/>
+                <Label Text="Note" FontSize="Large" Margin="5, 20, 0, 0"/>
+                <Label Text="{Binding Note}"/>
+                <Label Text="Events" FontSize="Large" Margin="5, 20, 0, 0"/>
+                <ListView ItemsSource="{Binding EventList}" HeightRequest="250"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

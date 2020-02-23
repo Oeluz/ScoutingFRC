@@ -7,10 +7,6 @@
              Title="Manual"
              x:Class="EasyPeasyScouting.Views.ManualPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Manual Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <WebView x:Name="WebView"/>
     </ContentPage.Content>
 </ContentPage>

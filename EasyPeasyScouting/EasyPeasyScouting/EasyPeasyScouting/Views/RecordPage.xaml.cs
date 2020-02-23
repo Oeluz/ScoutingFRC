@@ -14,7 +14,18 @@ namespace EasyPeasyScouting.Views
     {
         public RecordPage()
         {
+            this.BindingContext = Robots.list;
             InitializeComponent();
+        }
+
+        private async void RobotLV_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var page = new RobotPage();
+            page.BindingContext = Robots.list[e.ItemIndex];
+
+            RobotLV.SelectedItem = null;
+
+            await Navigation.PushAsync(page);
         }
     }
 }

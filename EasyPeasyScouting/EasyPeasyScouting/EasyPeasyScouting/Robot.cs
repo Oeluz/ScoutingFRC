@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EasyPeasyScouting
 {
-    class Robot
+    public class Robot
     {
         public string Name { get; set; }
         public string MatchNum { get; set; }
@@ -28,6 +28,7 @@ namespace EasyPeasyScouting
         {
             Name = name;
             MatchNum = matchNum;
+            Note = String.Empty;
             Initated = false;
             Hanged = false;
             Leveled = false;

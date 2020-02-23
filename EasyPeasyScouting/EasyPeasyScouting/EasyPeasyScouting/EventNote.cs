@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EasyPeasyScouting
 {
-    class EventNote
+    public class EventNote
     {
         public DateTime Time { get; set; }
         public string EventName { get; set; }
@@ -13,6 +13,11 @@ namespace EasyPeasyScouting
         {
             Time = time;
             EventName = eventName;
+        }
+
+        public override string ToString()
+        {
+            return $"{EventName} - {Time:mm:ss:fff}";
         }
     }
 }
