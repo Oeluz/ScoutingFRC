@@ -19,8 +19,21 @@ namespace EasyPeasyScouting
             MainPage = new MainPage();
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "data.txt");
+            string value = "";
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                value = await sr.ReadToEndAsync();
+                Robots.list = JsonConvert.DeserializeObject<List<Robot>>(value);
+            }
+
+            if(Robots.list == null)
+            {
+                Robots.list = new List<Robot>();
+            }
         }
 
         protected override void OnSleep()

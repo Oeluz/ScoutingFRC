@@ -451,15 +451,19 @@ namespace EasyPeasyScouting.Views
             if (RotationSwitch.IsToggled)
                 robot.RotationCtrl = true;
 
-            robot.Note = NoteEdit.Text; //Assign the value of NoteEdit's text to Note in robot object
+            if (NoteEdit.Text == null)
+                robot.Note = string.Empty;
+            else
+                robot.Note = NoteEdit.Text; //Assign the value of NoteEdit's text to Note in robot object
 
             Robots.list.Add(robot); //add the robot object to the list
             await DisplayAlert("Saved!", "The robot is saved to the record", "Ok"); //display the alert to notify the user that the robot is saved
 
 
-            //Unable to overwrite a file due to permission - unsure how to do it
-            //string value = JsonConvert.SerializeObject(Robots.list);
-            //File.WriteAllText("data.txt", value);
+            //overwrite the data.txt file with new JSON
+            string value = JsonConvert.SerializeObject(Robots.list);
+            string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "data.txt");
+            File.WriteAllText(filepath, value);
 
             Reset(); //No navigation, which mean will call the custom method to "reset" everything to first screen
         }

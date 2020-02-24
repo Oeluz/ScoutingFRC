@@ -8,12 +8,12 @@
              x:Class="EasyPeasyScouting.Views.RecordPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="RobotLV" ItemsSource="{Binding}"  RowHeight="50" ItemTapped="RobotLV_ItemTapped">
+            <ListView x:Name="RobotLV" ItemsSource="{Binding}"  RowHeight="70" ItemTapped="RobotLV_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}" FontSize="Medium"/>
+                                <Label Text="{Binding Name, StringFormat='Robot # {0}'}" FontSize="Large" Margin="20, 0, 0, 0" VerticalOptions="Center" FontAttributes="Bold"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
