@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+/* Author:      Zhencheng Chen
+ * Class:       Provide a view in MatchPage that function as a "view" that allow the users to swipe since Grid doesn't provide gesture recognizer
+ * Date:        2/24/2020
+ */
 namespace EasyPeasyScouting
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]

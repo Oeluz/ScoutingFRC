@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
-
+/* Author:      Zhencheng Chen
+ * Class:       Display the information of a robot, also include the option to email the information with the toolbar item
+ * Date:        2/24/2020
+ */
 namespace EasyPeasyScouting.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -20,10 +23,10 @@ namespace EasyPeasyScouting.Views
 
         private async void EmailBtn_Clicked(object sender, EventArgs e)
         {
-            var robot = (Robot)BindingContext;
+            var robot = (Robot)BindingContext; //Get the robot object from the BindingContext
             try
             {
-                var message = new EmailMessage
+                var message = new EmailMessage  //Making an email
                 {
                     Subject = robot.Name + " - Scouting",
                     Body = $"Name: {robot.Name}\n" +
@@ -44,9 +47,9 @@ namespace EasyPeasyScouting.Views
                     $"Note: \n{robot.Note}\n"
                 };
 
-                await Email.ComposeAsync(message);
+                await Email.ComposeAsync(message); // Show the email in an email app
             }
-            catch (FeatureNotSupportedException fbsEx)
+            catch (FeatureNotSupportedException fbsEx) //not supported? Display an alert
             {
                 await DisplayAlert("Not Supported", fbsEx.Message, "Ok");
             }

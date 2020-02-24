@@ -57,8 +57,8 @@
             </Grid.ColumnDefinitions>
 
             <!-- Screen #0 -->
-            <Entry x:Name="NameEntry" Placeholder="Robot Name or Number" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
-            <Entry x:Name="MatchEntry" Placeholder="Match Number" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
+            <Entry x:Name="NameEntry" Placeholder="Robot Name or Number" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Keyboard="Numeric"/>
+            <Entry x:Name="MatchEntry" Placeholder="Match Number" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Keyboard="Numeric"/>
             <Button x:Name="StartBtn" Text="START" Grid.Row="4" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" FontSize="Large" 
                     Clicked="Button_Clicked" />
 
@@ -74,11 +74,11 @@
             <Button x:Name="SubInnerBtn" Text="-" Grid.Row="2" Grid.RowSpan="2" Grid.Column="4" Margin="0,0,5,0" IsVisible="False"
                      Clicked="PointButton_Clicked"/>
             <Button x:Name="UpperBtn" Text="# of Outer Scored: 0" Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" 
-                    Margin="10,5,0,0" IsVisible="False" Clicked="PointButton_Clicked"/>
+                    Margin="10,0,0,0" IsVisible="False" Clicked="PointButton_Clicked"/>
             <Button x:Name="SubUpperBtn" Text="-" Grid.Row="4" Grid.RowSpan="2" Grid.Column="4" Margin="0,0,5,0" IsVisible="False"
                      Clicked="PointButton_Clicked"/>
             <Button x:Name="BotBtn" Text="# of Bottom Scored: 0" Grid.Row="6" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" 
-                    Margin="10,5,0,0" IsVisible="False" Clicked="PointButton_Clicked"/>
+                    Margin="10,0,0,0" IsVisible="False" Clicked="PointButton_Clicked"/>
             <Button x:Name="SubBotBtn" Text="-" Grid.Row="6" Grid.RowSpan="2" Grid.Column="4" Margin="0,0,5,0" IsVisible="False"
                      Clicked="PointButton_Clicked"/>
                 

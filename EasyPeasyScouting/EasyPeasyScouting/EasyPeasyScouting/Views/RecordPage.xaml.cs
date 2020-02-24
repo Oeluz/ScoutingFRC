@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+/* Author:      Zhencheng Chen
+ * Class:       A Page that contain the listview with Robots.list as the itemsource
+ * Date:        2/24/2020
+ */
 namespace EasyPeasyScouting.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,9 +24,9 @@ namespace EasyPeasyScouting.Views
         private async void RobotLV_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var page = new RobotPage();
-            page.BindingContext = Robots.list[e.ItemIndex];
+            page.BindingContext = Robots.list[e.ItemIndex]; //Carry the object to RobotPage
 
-            RobotLV.SelectedItem = null;
+            RobotLV.SelectedItem = null; 
 
             await Navigation.PushAsync(page);
         }

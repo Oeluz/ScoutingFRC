@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+/* Author:      Zhencheng Chen
+ * Class:       A Robot class that is able to generate an Robot object
+ * Date:        2/24/2020
+ */
 namespace EasyPeasyScouting
 {
     public class Robot
